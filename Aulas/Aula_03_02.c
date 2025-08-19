@@ -20,7 +20,5 @@ int main(){
 
     printf("O resultado e %d", soma);
 
-    media = v1 + v2 + v3; 
-
    return 0;
 }
