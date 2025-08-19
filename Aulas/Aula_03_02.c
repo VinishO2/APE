@@ -5,7 +5,6 @@ int main(){
     int v2;
     int v3;
     int soma;
-    int media;
 
     printf("Digite um numero: ");
     scanf("%d", &v1);
