@@ -5,6 +5,7 @@ int main(){
     int v2;
     int v3;
     int soma;
+    int media;
 
     printf("Digite um numero: ");
     scanf("%d", &v1);
@@ -17,7 +18,10 @@ int main(){
 
     soma = v1 + v2 + v3;
 
+    media = (v1 + v2 + v3)/3;
+
     printf("O resultado e %d", soma);
+    printf (" e a media tem resultado de %d", media);
 
    return 0;
 }
