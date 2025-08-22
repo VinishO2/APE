@@ -18,7 +18,7 @@ int main(){
 
     if (operacao == 's'){
         resultado = n1 + n2;
-    }else if(operacao == 'm'){
+    }else if (operacao == 'm'){
         resultado = n1 * n2;
     } else if (operacao == 'z'){
         resultado = n1 - n2;
