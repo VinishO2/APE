@@ -18,11 +18,11 @@ int main(){
 
 if (operacao == 's' || operacao == 'S'){ // || -> ou
         resultado = n1 + n2;
-    }else if (operacao == 'm'){
+    }else if (operacao == 'm' || operacao == 'M'){
         resultado = n1 * n2;
-    } else if (operacao == 'z'){
+    } else if (operacao == 'z' || operacao == 'Z'){
         resultado = n1 - n2;
-    } else if (operacao == 'd') {
+    } else if (operacao == 'd' || operacao == 'D') {
         resultado = n1 / n2;
     };
 
