@@ -16,7 +16,7 @@ int main(){
     printf ("Digite a operacao: ");
     scanf ("%s",&operacao);
 
-    if (operacao == 's'){
+if (operacao == 's' || operacao == 'S'){ // || -> ou
         resultado = n1 + n2;
     }else if (operacao == 'm'){
         resultado = n1 * n2;
@@ -26,7 +26,7 @@ int main(){
         resultado = n1 / n2;
     };
 
-    printf ("O resultado é %f", resultado);
+    printf ("O resultado e %f", resultado);
 
 
     return 0;
