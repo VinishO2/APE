@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// identificar se o numero é maior que o outro
 int main(){
     float v1, v2;
     float resultado;

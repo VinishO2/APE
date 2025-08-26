@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// Leia se o numero é impar ou par
 int main(){
     int v1;
 
