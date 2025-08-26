@@ -14,7 +14,7 @@ int main(){
         printf("Voce esta aprovado com folga!");
     } else if (nota >= 7.0 && falta < 15){
         printf("Voce esta aprovado!");
-    } else if (nota >=5.0 < 7.0 && falta < 15) {
+    } else if (nota >=5.0 < 7.0 && falta > 15) {
         printf("Voce esta de recuperacao");
     } else {
         printf ("Voce esta reprovado!");
