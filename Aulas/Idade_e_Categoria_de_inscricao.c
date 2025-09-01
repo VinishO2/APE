@@ -17,7 +17,7 @@ int main(){
 		printf("Idade Valida \n");
 		if (idade >=0 && idade <=12){
 
-			strcpy (tipo_categoria, "Infantil"); //copia o tipo de categoria com base na idade
+			strcpy (tipo_categoria, "Infantil"); // strcpy - copia o tipo de categoria com base na idade
 
 		} else if (idade>=13 && idade <=17){
 
@@ -52,7 +52,7 @@ int main(){
 		printf("Idade Invalida");
 	}
 
-	strcat (msg, tipo_categoria); //concatena as informacoes das variaveis
+	strcat (msg, tipo_categoria); // strcat - concatena as informacoes das variaveis
 	puts (msg); //junta a concatenacao em uma só mensagem
 return 0;
 }
