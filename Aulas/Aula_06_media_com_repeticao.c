@@ -5,7 +5,7 @@ int main (){
     float media;
     int ct = 1;
 
-    while (ct==1) //enquanto o valor definido nao chegar, irá repetir o codigo. Depois irá seguir o resto do codigo
+    while (ct==1) //enquanto o valor definido nao chegar, irá repetir o codigo. Depois irá seguir o resto do codigo -- looping/repetições
     {
 
         // media de 3 valores ao mesmo tempo
