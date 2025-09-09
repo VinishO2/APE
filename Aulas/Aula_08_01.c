@@ -10,7 +10,7 @@ int main(){
     while (multi <=9)
     {
         multi = multi + 1;
-        printf("A tabuada e: %d X %d = %d \n", num, multi, (num * multi));
+        printf("A tabuada e: Aulas/Aula_08_01.c%d X %d = %d \n", num, multi, (num * multi));
 
 
     }

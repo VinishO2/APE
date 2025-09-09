@@ -11,10 +11,9 @@ int main(){
         {
             printf("idade Invalida, tente novamente \n");
         }
-        
-
+    
      } while (idade <0 || idade >120);
-     
+    
     printf("Idade valida: %d \n", idade);
 
     return 0;
