@@ -7,7 +7,6 @@ int main(){
 	float soma = 0;
 	float media;
 	
-	
     do
     {
         printf("Digite um numero inteiro: ");
