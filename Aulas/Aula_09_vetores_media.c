@@ -21,5 +21,6 @@ int main(){
     
     total = soma / NOTA;
     printf("\nMedia e: %0.2f", total);
-    
+
+    return 0;
 }
