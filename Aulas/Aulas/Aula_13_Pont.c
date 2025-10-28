@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <locale.h>
 
-void dobrarValorSemRetorno(int n){
-    n = n * 2;
-    printf("Dentro da função: %d\n", n);
+void dobrarValor(int *n){
+    *n = *n * 2;
+    printf("Dentro da função: %d\n", *n);
 }
 
 
@@ -12,7 +12,7 @@ int main(){
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
     int x = 5;
-    dobrarValorComRetorno(x);
+    dobrarValor(&x);
     printf("Fora da função: %d\n", x);
 
     return 0;
