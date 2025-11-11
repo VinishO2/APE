@@ -15,21 +15,23 @@ struct pessoa
     
 };
 
-int main (){
-    system ("chcp 65001 > nul");
-    setlocale(LC_ALL, "pt_BR.UTF-8");
-
-    struct pessoa lista[TAM];
+void cadastrar(){
     int i;
+    struct pessoa lista[TAM];
+    FILE *f = fopen("pessoas.dat", "wb"); // write binary
+    if (f == NULL)
+    {
+        printf("Erro ao abrir o arquivo!\n");
+        return; 
+    }
 
     for (i = 0; i < TAM; i++)
     {
-        printf ("\n----- Pessoa %d -----\n", i + 1);
-
         printf("\nDigite o nome: ");
+        fflush(stdin);
         scanf (" %[^\n]s", lista[i].nome); // [^\n]s - Lê string com espaços 
         //fgets(lista[i].nome, sizeof(lista[i].nome), stdin);
-
+        
         printf("Digite o ano de nascimento: ");
         scanf ("%d", &lista[i].ano_nascimento);
 
@@ -46,9 +48,23 @@ int main (){
         scanf ("%lf", &lista[i].cpf); // %.0lf - sem casas decimais // %lf - double
     }
 
-    printf ("\n\n----- Dados -----\n");
-    for (i = 0; i < TAM; i++)
+    fwrite(&lista[i], sizeof(struct pessoa), 1, f);
+    
+    fclose(f);
+    printf("Dados salvos com sucesso!\n");
+}
+
+void listar(){
+    FILE *f = fopen("pessoas.dat", "wb"); // write binary
+    if (f == NULL)
     {
+        printf("Nenhum cadastro encontrado");
+        return;
+    }
+    int i;
+    struct pessoa lista[TAM];
+    
+    while (fread(&lista[i], sizeof(struct pessoa), 1, f) == 1){
         printf ("\n------------------");
         printf ("\nNome: %s", lista[i].nome);
         printf ("\nAno de Nascimento: %d", lista[i].ano_nascimento);
@@ -56,25 +72,48 @@ int main (){
         printf ("\nAltura: %.2fcm", lista[i].altura);
         printf ("\nPeso: %.2fkg", lista[i].peso);
         printf ("\nCPF: %.0lf\n", lista[i].cpf);  // %.0lf - sem casas decimais // %lf - double
+        printf ("------------------\n");
         
     }
-    printf ("------------------\n");
 
-    FILE *f = fopen("pessoas.dat", "wb"); // write binary
-    if (f == NULL)
-    {
-        printf("Erro ao abrir o arquivo!\n");
-        return 1;
-    }
-    
-    for (int i = 0; i < TAM; i++)
-    {
-        fwrite(&lista[i], sizeof(struct pessoa), 1, f);
-    }
-    
     fclose(f);
-    printf("Dados salvos com sucesso!\n");
+}
 
-    return 0;
+int main (){
+    system ("chcp 65001 > nul");
+    setlocale(LC_ALL, "pt_BR.UTF-8");
 
+    int menu;
+do
+{
+    printf("--------- Menu ---------\n");
+    printf("Digite 1 - Cadastrar Pessoa, 2 - Listar Pessoas, 3 - Sair \n");
+    scanf("%d", &menu);
+    fflush(stdin);
+
+    switch (menu)
+    {
+    case 1:
+        
+        cadastrar();
+        
+        break;
+    
+    case 2:
+
+        listar();
+        break;
+
+    case 3:
+
+        printf("\nSaindo");
+        break;
+
+    default:
+        printf("Opção Inválida");
+        break;
+    }
+} while (menu != 3);
+
+return 0;
 }
