@@ -48,30 +48,30 @@ void cadastrar(){
         scanf ("%lf", &lista[i].cpf); // %.0lf - sem casas decimais // %lf - double
     }
 
-    fwrite(&lista[i], sizeof(struct pessoa), 1, f);
+    fwrite(lista, sizeof(struct pessoa), TAM, f);
     
     fclose(f);
     printf("Dados salvos com sucesso!\n");
 }
 
 void listar(){
-    FILE *f = fopen("pessoas.dat", "wb"); // write binary
+    FILE *f = fopen("pessoas.dat", "rb"); // read binary
     if (f == NULL)
     {
         printf("Nenhum cadastro encontrado");
         return;
     }
-    int i;
-    struct pessoa lista[TAM];
     
-    while (fread(&lista[i], sizeof(struct pessoa), 1, f) == 1){
+    struct pessoa p;
+    
+    while (fread(&p, sizeof(struct pessoa), 1, f) == 1){
         printf ("\n------------------");
-        printf ("\nNome: %s", lista[i].nome);
-        printf ("\nAno de Nascimento: %d", lista[i].ano_nascimento);
-        printf ("\nSexo: %c", lista[i].sexo);
-        printf ("\nAltura: %.2fcm", lista[i].altura);
-        printf ("\nPeso: %.2fkg", lista[i].peso);
-        printf ("\nCPF: %.0lf\n", lista[i].cpf);  // %.0lf - sem casas decimais // %lf - double
+        printf ("\nNome: %s", p.nome);
+        printf ("\nAno de Nascimento: %d", p.ano_nascimento);
+        printf ("\nSexo: %c", p.sexo);
+        printf ("\nAltura: %.2fcm", p.altura);
+        printf ("\nPeso: %.2fkg", p.peso);
+        printf ("\nCPF: %.0lf\n", p.cpf);  // %.0lf - sem casas decimais // %lf - double
         printf ("------------------\n");
         
     }
