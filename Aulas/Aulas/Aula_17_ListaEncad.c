@@ -8,14 +8,14 @@ typedef struct No
 } No;
 
 void menu(){
-    printf("--- MENU ---");
+    printf("--- MENU ---\n");
     printf("1. Inserir valor no inicio\n");
     printf("2. Inserir valor no final\n");
     printf("3. Remover elemento por valor\n");
     printf("4. Mostrar lista \n");
     printf("5. SAIR\n");
     printf("Escolha uma opcao: ");
-};
+}
 
 No* criarNo(int data){
     No* novo = (No*) malloc(sizeof(No));
@@ -23,27 +23,32 @@ No* criarNo(int data){
     if (novo == NULL)
     {
         printf("Erro! \n");
-        return -1;
+        return NULL;
     }
     
     novo -> data = data;
     novo->prox = NULL;
     return novo;
-};
+}
 
 void inserirIni(No** top, int data){
     No* novo = criarNo(data);
+    if (novo == NULL) return;
+    
     novo->prox = *top;
     *top = novo;
-    printf("Valor %d inserido no inicio. \n");
-};
+    printf("Valor %d inserido no inicio. \n", data);
+}
 
-int inserirFim(No** top, int data){
+void inserirFim(No** top, int data){
     No* novo = criarNo(data);
+    if (novo == NULL) return;
+    
+
     if (*top == NULL)
     {
         *top = novo;
-        printf("Valor %d inserido no fim (lista estava vazia)");
+        printf("Valor %d inserido no fim (lista estava vazia). \n", data);
         return;
     }
 
@@ -53,10 +58,10 @@ int inserirFim(No** top, int data){
         ult = ult->prox;
     }
     ult->prox = novo;
-    printf("Valor %d inserido no fim.\n");
+    printf("Valor %d inserido no fim.\n", data);
     
-};
-int removerPorValor(No** top, int data){
+}
+void removerPorValor(No** top, int data){
     No* temp = *top;
     No* ant = NULL;
 
@@ -90,7 +95,7 @@ int removerPorValor(No** top, int data){
     free(temp);
     printf("Valor %d removido da lista.\n", data);
     
-};
+}
 
 
 void mostarLista(No* list){
@@ -109,12 +114,22 @@ void mostarLista(No* list){
     }
     printf("NULL\n");
     
-};
-int liberarLista(No** top);
+}
+void liberarLista(No** top){
+    No* atual = *top;
+    No* proxNo;
+
+    while(atual != NULL){
+        proxNo = atual -> prox;
+        free(atual);
+        atual = proxNo;
+    }
+    *top = NULL;
+}
 
 
 
-int main{
+int main() {
     No* list = NULL;
     int opcao, valor;
 
